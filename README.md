@@ -63,12 +63,14 @@ exploratory analysis on any input data describing the structure and the
 relationships present in the data. The generated output can be obtained
 in both object and graphical form.
 
-The eda.utilsR is capable of : - Diagnose data quality : Resolve skewed
-data by identifying missing data and outlier and provide corresponding
-remedy. - Discover data: Plot correlation matrix to help explore data to
-understand the data and find scenarios for performing the analysis. -
-Machine learning perpetration : Perform column transformations, derive
-scaler automatically to fulfill further machine learning need
+The eda.utilsR is capable of :
+
+  - Diagnose data quality : Resolve skewed data by identifying missing
+    data and outlier and provide corresponding remedy.
+  - Discover data: Plot correlation matrix to help explore data to
+    understand the data and find scenarios for performing the analysis.
+  - Machine learning perpetration : Perform column transformations,
+    derive scaler automatically to fulfill further machine learning need
 
 ## Documentation
 
