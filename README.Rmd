@@ -69,10 +69,6 @@ The eda.utilsR is capable of :
 - Machine learning perpetration : Perform column transformations, derive scaler automatically to fulfill further machine learning need
     
 
-## Documentation
-
-The official documentation is hosted on Read the Docs: https://eda.utilsR.readthedocs.io/en/latest/
-
 ## Contributors
 
 This package is authored by Chuang Wang, Fatime Selimi, Jiacheng Wang, and Micah Kwok as part of the course project in DSCI-524 (UBC-MDS program). You can see the list of all contributors in the [contributors tab](https://github.com/UBC-MDS/eda.utilsR/graphs/contributors).
