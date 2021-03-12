@@ -20,6 +20,72 @@
 #' outlier_identifier(data)
 #' 
 outlier_identifier <- function(dataframe, columns= NULL, method = 'trim'){
-    #TODO
-} 
+  
+  # datatype check for dataframe
+  if (!is.data.frame(dataframe)) {
+    stop("The argument dataframe is not dataframe")
+  }
+  
+  # check if there is non-numeric column
+  if(is.null(columns)){
+    if(sum(unlist(lapply(dataframe, is.numeric))) != length(dataframe)){
+        stop("there is non-numeric column in dataframe")
+      }
+  } else {
+    
+    if(!is.vector(columns)){
+      stop("Argument columns must be a vector")
+    }
+     possible_numeric_col <- dataframe %>% select(where(is.numeric)) %>% colnames()
+      for (col in columns){
+        if (!(col %in% possible_numeric_col)){
+          stop("The given columns contains non-numeric columns in this dataframe.")
+        }
+      }
+    }
+  
+  # check if method input is valid
+  if(!method %in% c("trim", "median", "mean")){
+    stop("The given method must be one of ('trim', 'median', 'mean')")
+  }
+  
+  df_cp <- data.frame(dataframe)
+  if(is.null(columns)){
+    columns <- names(df_cp)
+  }
+  
+  outlier_index <- c()
+  
+  for(col in columns){
+    current_col <- df_cp[col]
+    col_mean <- apply(current_col, 2, mean)
+    col_std <- apply(current_col, 2, sd)
+    threshold <- 2.5
+    
+    
+    for(i in 1:nrow(df_cp)){
+      current_item <- current_col[i,]
+      z = (current_item - col_mean) / col_std
+      if( z >= threshold ){
+        
+        if(!i %in% outlier_index) {
+          outlier_index <- c(outlier_index, i)
+        }
+        if(method == "mean"){
+          df_cp[i, col] = round(col_mean, 2)
+        }
+        if(method == "median"){
+          df_cp[i, col] = apply(current_col, 2, median)
+        }
+      }
+    }
+  }
+   if(method == "trim"){
+      df_cp <- df_cp[-outlier_index, ]
+    }
+    
+    row.names(df_cp) <- NULL
+    
+    return(df_cp)
+}
 
