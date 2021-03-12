@@ -11,9 +11,11 @@
 #' @export
 #'
 #' @examples
-#' data = data.Frame({  'SepalLengthCm':[5.1, 4.9, 4.7]
-#                         'SepalWidthCm':[1.4, 1.4, 99],
-#                          'PetalWidthCm:[0.2, 0.2, 0.2]})
+#' data = data.Frame(
+#' 'SepalLengthCm' = c(5.1, 4.9, 4.7),
+#' 'SepalWidthCm' = c(1.4, 1.4, 99),
+#' 'PetalWidthCm' = c(0.2, 0.2, 0.2)
+#' )
 #'  
 #' outlier_identifier(data)
 #' 
