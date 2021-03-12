@@ -9,6 +9,7 @@
 #' @import ggplot2
 #' @import reshape2
 #' @import stats
+#' @importFrom rlang .data
 #' 
 #' @export
 #'
@@ -77,7 +78,7 @@ cor_map <- function(dataframe, num_col, col_scheme = 'purpleorange'){
   
   melted_corr_data <- melt(corr_data)
   
-  cor_plot <- ggplot(melted_corr_data, aes(x = Var1, y = Var2, fill = value)) +
+  cor_plot <- ggplot(melted_corr_data, aes(x = .data$Var1, y = .data$Var2, fill = .data$value)) +
     geom_tile() + 
     scale_fill_gradient2(low = low_c, mid = 'white', high = high_c, midpoint = 0, limit = c(-1,1)) +
     labs(fill = 'Correlation', title = 'Correlation Plot') +
@@ -85,7 +86,7 @@ cor_map <- function(dataframe, num_col, col_scheme = 'purpleorange'){
           axis.text.y = element_text(size = 10))
   
   cor_heatmap <- cor_plot +
-    geom_text(aes(x = Var1, y = Var2, label = value), size = 7) +
+    geom_text(aes(x = .data$Var1, y = .data$Var2, label = .data$value), size = 7) +
     theme(axis.title.x = element_blank(),
           axis.title.y = element_blank()) + coord_fixed()
   
