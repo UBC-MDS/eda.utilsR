@@ -1,6 +1,3 @@
-library(tidyverse)
-library(reshape2)
-
 #' A function to implement a correlation heatmap including coefficients based on given numeric columns of a data frame.
 #'
 #' @param dataframe The data frame to be used for EDA.
@@ -8,13 +5,18 @@ library(reshape2)
 #' @param col_scheme The color scheme of the heatmap desired, can only be one of the following: 'purpleorange', 'blueorange', 'redblue'. Defaults to 'purpleorange'.
 #'
 #' @return ggplot object; A correlation heatmap plot with correlation coefficient labels based on the numeric columns specified by user.
+#' @import dplyr
+#' @import ggplot2
+#' @import reshape2
+#' @import stats
+#' 
 #' @export
 #'
 #' @examples
 #' data <- data.frame(
 #' SepalLengthCm = c(5.1, 4.9, 4.7), 
 #' SepalWidthCm = c(1.4, 1.4, 1.3), 
-#' PetalWidthCm = c(0.2, 0.1, 0.2), 
+#' PetalWidthCm = c(0.2, 0.1, 0.2),
 #' Species = c('Iris-setosa','Iris-virginica', 'Iris-germanica')
 #' )
 #' numerical_columns <- c('SepalLengthCm','SepalWidthCm','PetalWidthCm')
@@ -51,7 +53,7 @@ cor_map <- function(dataframe, num_col, col_scheme = 'purpleorange'){
   }
   
   # Tests whether all input columns in num_col are numeric columns
-  possible_numeric_col <- dataframe %>% select(where(is.numeric)) %>% colnames()
+  possible_numeric_col <- dataframe %>% select_if(is.numeric) %>% colnames()
   for (x in num_col){
     if (!(x %in% possible_numeric_col)){
       stop("The given numerical columns must all be numeric.")
