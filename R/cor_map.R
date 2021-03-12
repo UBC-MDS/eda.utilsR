@@ -1,3 +1,6 @@
+library(tidyverse)
+library(reshape2)
+
 #' A function to implement a correlation heatmap including coefficients based on given numeric columns of a data frame.
 #'
 #' @param dataframe The data frame to be used for EDA.
@@ -8,11 +11,76 @@
 #' @export
 #'
 #' @examples
-#' data <- data.frame('SepalLengthCm' = (c(5.1, 4.9, 4.7)), SepalWidthCm'= (c(1.4, 1.4, 1.3)), PetalWidthCm'= (c(0.2, 0.2, 0.2)), Species' = (c('Iris-setosa','Iris-virginica', 'Iris-germanica')))
+#' data <- data.frame('SepalLengthCm' = (c(5.1, 4.9, 4.7)), SepalWidthCm'= (c(1.4, 1.4, 1.3)), PetalWidthCm'= (c(0.2, 0.1, 0.2)), Species' = (c('Iris-setosa','Iris-virginica', 'Iris-germanica')))
 #' numerical_columns <- c('SepalLengthCm','SepalWidthCm','PetalWidthCm')
 #'  
 #' cor_map(data, numerical_columns, col_scheme = 'purpleorange')
 #' 
 cor_map <- function(dataframe, num_col, col_scheme = 'purpleorange'){
-    # to be implemented
+    
+  # Tests whether input dataframe is data.frame type
+  if (!is.data.frame(dataframe)) {
+    stop("The input dataframe must be of 'data.frame' type")
+  }
+  
+  # Tests whether input num_col is a vector
+  if(!is.vector(num_col) | !is.character(num_col)){
+    stop("num_col must be a vector of characters")
+  }
+  
+  # Tests whether input col_scheme is of class character
+  if(!is.character(col_scheme)){
+    stop("col_scheme must be of character class")
+  }
+  
+  # Tests whether col_scheme is one of three possible options
+  if(!(col_scheme %in% c("purpleorange", "blueorange", "redblue"))){
+    stop("This color scheme is not available, please use either 'purpleorange', 'blueorange' or 'redblue'")
+  }
+  
+  # Tests whether all input columns exist in the input data    
+  for (x in num_col){
+    if (!(x %in% colnames(dataframe))){
+      stop("The given column names must exist in the given dataframe.")
+    }
+  }
+  
+  # Tests whether all input columns in num_col are numeric columns
+  possible_numeric_col <- dataframe %>% select(where(is.numeric)) %>% colnames()
+  for (x in num_col){
+    if (!(x %in% possible_numeric_col)){
+      stop("The given numerical columns must all be numeric.")
+    }
+  }
+  
+  if (col_scheme == 'purpleorange'){
+    low_c ='#43186c'
+    high_c = '#db8322'
+  } else if (col_scheme == 'blueorange'){
+    low_c ='#1a5791'
+    high_c = '#db8322'
+  } else if (col_scheme == 'redblue'){
+    low_c ='#ba3238'
+    high_c = '#296faa'
+  }
+  
+  data <- dataframe %>% select(all_of(num_col))
+  
+  corr_data <- round(cor(data),2)
+  
+  melted_corr_data <- melt(corr_data)
+  
+  cor_plot <- ggplot(melted_corr_data, aes(x = Var1, y = Var2, fill = value)) +
+    geom_tile() + 
+    scale_fill_gradient2(low = low_c, mid = 'white', high = high_c, midpoint = 0, limit = c(-1,1)) +
+    labs(fill = 'Correlation', title = 'Correlation Plot') +
+    theme(axis.text.x = element_text(size = 10),
+          axis.text.y = element_text(size = 10))
+  
+  cor_heatmap <- cor_plot +
+    geom_text(aes(x = Var1, y = Var2, label = value), size = 7) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank()) + coord_fixed()
+  
+  return(cor_heatmap)
 }
