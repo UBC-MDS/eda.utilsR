@@ -19,7 +19,7 @@ scale <- function(df, columns, scaler = "standard") {
     stop("The input dataframe must be of 'data.frame' type")
   }
   
-  # Check if input num_col is a vector
+  # Check if input columns is a vector
   if (!is.vector(columns) | !is.character(columns)) {
     stop("columns must be a vector of characters")
   }
