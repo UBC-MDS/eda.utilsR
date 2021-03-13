@@ -15,7 +15,12 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    tibble
+    tibble,
+    tidyverse,
+    ggplot2,
+    dplyr,
+    usethis,
+    magrittr
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

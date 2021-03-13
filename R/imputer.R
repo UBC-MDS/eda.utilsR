@@ -41,21 +41,7 @@ imputer <- function(df, strategy = "mean", fill_value = NA) {
       stop("fill_value can be a number only when strategy is 'constant'")
     )
   }
-  # NA2mean <- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
-  # NA2median <- function(x) replace(x, is.na(x), median(x, na.rm = TRUE))
-  # NA2constant <- function(x) replace(x, is.na(x), fill_value)
-  # NA2mostfreq <- function(x) replace(x, is.na(x), mode(x, na.rm = TRUE))
-  # if(strategy == "mean") {
-  #   replace(data, TRUE, lapply(data, NA2mean))
-  # } else if(strategy == "median") {
-  #   replace(data, TRUE, lapply(data, NA2median))
-  # } else if (strategy == "most_frequent") {
-  #   replace(data, TRUE, lapply(data, NA2mostfreq))
-  # } else if (strategy == "constant") {
-  #   replace(data, TRUE, lapply(data, NA2constant))
-  # } else {
-  #   stop("strategy should be one of 'mean', 'median', 'most_frequent' and 'constant'")
-  # }
+
   for (i in 1:ncol(df)) {
     if (strategy == "mean") {
       df[is.na(df[, i]), i] <- mean(df[, i], na.rm = TRUE)
