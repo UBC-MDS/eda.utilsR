@@ -42,7 +42,7 @@ scale <- function(df, columns, scaler = "standard") {
   }
   
   # Check if all input columns in columns are numeric columns
-  numeric_col <- df %>% select(where(is.numeric)) %>% colnames()
+  numeric_col <- df %>% select_if(is.numeric) %>% colnames()
   for (col in columns) {
     if (!(col %in% numeric_col)) {
       stop("The given numerical columns must all be numeric.")
