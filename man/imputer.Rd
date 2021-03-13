@@ -20,9 +20,9 @@ list
 A function to implement imputation functionality for completing missing values.
 }
 \examples{
-df = tibble::tibble(
-"col1" = c(1, 2, NA),
-"col2" = c(2, NA, NA)
+df <- tibble::tibble(
+  "col1" = c(1, 2, NA),
+  "col2" = c(2, NA, NA)
 )
 
 imputer(df)

@@ -50,8 +50,8 @@ test_that('Heatmap portion should be geom_tile.',{
 
 # Tests whether axes is using correct calculated var column as reference
 test_that('Plot should map x to Var1 and y to Var2',{
-  expect_true('Var1' == rlang::get_expr(plot_demo$mapping$x))
-  expect_true('Var2' == rlang::get_expr(plot_demo$mapping$y))
+  expect_true('.data$Var1' == rlang::get_expr(plot_demo$mapping$x))
+  expect_true('.data$Var2' == rlang::get_expr(plot_demo$mapping$y))
 })
 
 # Tests whether the first color in heatmap is orange

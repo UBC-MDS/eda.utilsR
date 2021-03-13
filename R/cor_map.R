@@ -1,6 +1,3 @@
-library(tidyverse)
-library(reshape2)
-
 #' A function to implement a correlation heatmap including coefficients based on given numeric columns of a data frame.
 #'
 #' @param dataframe The data frame to be used for EDA.
@@ -8,13 +5,19 @@ library(reshape2)
 #' @param col_scheme The color scheme of the heatmap desired, can only be one of the following: 'purpleorange', 'blueorange', 'redblue'. Defaults to 'purpleorange'.
 #'
 #' @return ggplot object; A correlation heatmap plot with correlation coefficient labels based on the numeric columns specified by user.
+#' @import dplyr
+#' @import ggplot2
+#' @import reshape2
+#' @import stats
+#' @importFrom rlang .data
+#' 
 #' @export
 #'
 #' @examples
 #' data <- data.frame(
 #' SepalLengthCm = c(5.1, 4.9, 4.7), 
 #' SepalWidthCm = c(1.4, 1.4, 1.3), 
-#' PetalWidthCm = c(0.2, 0.1, 0.2), 
+#' PetalWidthCm = c(0.2, 0.1, 0.2),
 #' Species = c('Iris-setosa','Iris-virginica', 'Iris-germanica')
 #' )
 #' numerical_columns <- c('SepalLengthCm','SepalWidthCm','PetalWidthCm')
@@ -51,7 +54,7 @@ cor_map <- function(dataframe, num_col, col_scheme = 'purpleorange'){
   }
   
   # Tests whether all input columns in num_col are numeric columns
-  possible_numeric_col <- dataframe %>% select(where(is.numeric)) %>% colnames()
+  possible_numeric_col <- dataframe %>% select_if(is.numeric) %>% colnames()
   for (x in num_col){
     if (!(x %in% possible_numeric_col)){
       stop("The given numerical columns must all be numeric.")
@@ -75,7 +78,7 @@ cor_map <- function(dataframe, num_col, col_scheme = 'purpleorange'){
   
   melted_corr_data <- melt(corr_data)
   
-  cor_plot <- ggplot(melted_corr_data, aes(x = Var1, y = Var2, fill = value)) +
+  cor_plot <- ggplot(melted_corr_data, aes(x = .data$Var1, y = .data$Var2, fill = .data$value)) +
     geom_tile() + 
     scale_fill_gradient2(low = low_c, mid = 'white', high = high_c, midpoint = 0, limit = c(-1,1)) +
     labs(fill = 'Correlation', title = 'Correlation Plot') +
@@ -83,7 +86,7 @@ cor_map <- function(dataframe, num_col, col_scheme = 'purpleorange'){
           axis.text.y = element_text(size = 10))
   
   cor_heatmap <- cor_plot +
-    geom_text(aes(x = Var1, y = Var2, label = value), size = 7) +
+    geom_text(aes(x = .data$Var1, y = .data$Var2, label = .data$value), size = 7) +
     theme(axis.title.x = element_blank(),
           axis.title.y = element_blank()) + coord_fixed()
   
