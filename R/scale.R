@@ -5,6 +5,9 @@
 #' @param scaler The method for scaling data and can only be one of the following: 'standard', 'minmax'
 #'
 #' @return The scaled dataframe for numerical features
+#' @import dplyr
+#' @importFrom stats sd median
+#' 
 #' @export
 #'
 #' @examples

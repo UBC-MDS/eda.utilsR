@@ -8,7 +8,7 @@
 #' @import dplyr
 #' @import ggplot2
 #' @import reshape2
-#' @import stats
+#' @importFrom stats cor
 #' @importFrom rlang .data
 #' 
 #' @export

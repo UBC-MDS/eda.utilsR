@@ -8,6 +8,9 @@
 #           - if "mean" : we replace outliers with mean values
 #'
 #' @return dataframe object; a dataframe which the outlier has already process by the chosen method
+#' @import dplyr
+#' @importFrom stats sd median
+#' 
 #' @export
 #'
 #' @examples

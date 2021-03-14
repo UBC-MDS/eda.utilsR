@@ -6,6 +6,9 @@ library(tibble)
 #' @param fill_value character
 #'
 #' @return list
+#' @import dplyr
+#' @importFrom stats sd median
+#' 
 #' @export
 #'
 #' @examples
