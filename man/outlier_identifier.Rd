@@ -2,7 +2,7 @@
 % Please edit documentation in R/outlier.R
 \name{outlier_identifier}
 \alias{outlier_identifier}
-\title{A function that identify by z-test with threshold of 3, and deal with outliers based on the method the user choose.}
+\title{A function that identify by z-test with threshold of 2.5, and deal with outliers based on the method the user choose.}
 \usage{
 outlier_identifier(dataframe, columns = NULL, method = "trim")
 }
@@ -17,13 +17,13 @@ outlier_identifier(dataframe, columns = NULL, method = "trim")
 dataframe object; a dataframe which the outlier has already process by the chosen method
 }
 \description{
-A function that identify by z-test with threshold of 3, and deal with outliers based on the method the user choose.
+A function that identify by z-test with threshold of 2.5, and deal with outliers based on the method the user choose.
 }
 \examples{
-data = data.Frame(
-'SepalLengthCm' = c(5.1, 4.9, 4.7),
-'SepalWidthCm' = c(1.4, 1.4, 99),
-'PetalWidthCm' = c(0.2, 0.2, 0.2)
+data = data.frame(
+SepalLengthCm = c(5.1, 4.9, 4.7, 5.4),
+SepalWidthCm = c(1.4, 1.4, 20, 2.3),
+PetalWidthCm = c(0.2, 0.2, 0.2, 0.9)
 )
  
 outlier_identifier(data)

@@ -59,17 +59,17 @@ test_that("The given column names must exist in the given dataframe.", {
 })
 
 
-# test minmax sclaed data output for data1 df above
+# test minmax scaled data output for data1 df above
 test_that("The scaled dataframe is not correct", {
   expect_true(all.equal(scale(data1, c('col1', 'col2'), scaler = 'minmax'), data1_minmax))
 })
 
-# test standard sclaed data output for data1 df above
+# test standard scaled data output for data1 df above
 test_that("The scaled dataframe is not correct", {
   expect_true(all.equal(scale(data1, c('col1', 'col2'), scaler = 'standard'), data1_standardize))
 })
 
-# test minmax sclaed data output for data2 df above
+# test minmax scaled data output for data2 df above
 test_that("The scaled dataframe is not correct", {
   expect_true(all.equal(scale(
     data2, c('col1', 'col2', 'col3'), scaler = 'minmax'
@@ -77,7 +77,7 @@ test_that("The scaled dataframe is not correct", {
 })
 
 
-# test standard sclaed data output for data2 df above
+# test standard scaled data output for data2 df above
 test_that("The scaled dataframe is not correct", {
   expect_true(all.equal(scale(
     data2, c('col1', 'col2', 'col3'), scaler = 'standard'

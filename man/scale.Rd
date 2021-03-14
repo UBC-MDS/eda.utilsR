@@ -20,9 +20,9 @@ The scaled dataframe for numerical features
 A function to scale features either by using standard scaler or minmax scaler method
 }
 \examples{
-df = tibble::tibble(
-col1 = c(1, 2, 1),
-col2 = c(2, 2, 1)
+data1 = data.frame(
+"col1" = c(1, 2, 1),
+"col2" = c(2, 2, 1)
 )
-scale(df, numerical_columns)
+scale(data1, c('col1', 'col2'))
 }
