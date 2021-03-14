@@ -1,4 +1,4 @@
-#' A function that identify by z-test with threshold of 3, and deal with outliers based on the method the user choose.
+#' A function that identify by z-test with threshold of 2.5, and deal with outliers based on the method the user choose.
 #'
 #' @param dataframe The target dataframe where the function is performed.
 #' @param columns A vector of the target columns where the function needed to be performed. Defualt is NULL, the function will check all columns
@@ -11,10 +11,10 @@
 #' @export
 #'
 #' @examples
-#' data = data.Frame(
-#' 'SepalLengthCm' = c(5.1, 4.9, 4.7),
-#' 'SepalWidthCm' = c(1.4, 1.4, 99),
-#' 'PetalWidthCm' = c(0.2, 0.2, 0.2)
+#' data = data.frame(
+#' SepalLengthCm = c(5.1, 4.9, 4.7, 5.4),
+#' SepalWidthCm = c(1.4, 1.4, 20, 2.3),
+#' PetalWidthCm = c(0.2, 0.2, 0.2, 0.9)
 #' )
 #'  
 #' outlier_identifier(data)
@@ -80,9 +80,10 @@ outlier_identifier <- function(dataframe, columns= NULL, method = 'trim'){
       }
     }
   }
-   if(method == "trim"){
+
+  if(method == "trim" & !is.null(outlier_index)){
       df_cp <- df_cp[-outlier_index, ]
-    }
+  }
     
     row.names(df_cp) <- NULL
     
