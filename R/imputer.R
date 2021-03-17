@@ -1,4 +1,3 @@
-library(tibble)
 #' A function to implement imputation functionality for completing missing values.
 #'
 #' @param df list
@@ -9,7 +8,7 @@ library(tibble)
 #' @export
 #'
 #' @examples
-#' df <- tibble::tibble(
+#' df <- data.frame(
 #'   "col1" = c(1, 2, NA),
 #'   "col2" = c(2, NA, NA)
 #' )
