@@ -30,15 +30,16 @@ imp_constant = data.frame(
 
 # testing the input df
 test_that("The input df must be of 'data.frame' type", {
-  expect_error(imputer(list(1, "str", c(1,2,3))))
+  expect_error(imputer(list(1, "str", c(1, 2, 3))))
   expect_error(imputer(10))
 })
 
 # testing the input strategy
-test_that("The input strategy must be of 'character' type and one of the four options", {
-  expect_error(imputer(data, strategy = 2))
-  expect_error(imputer(data, strategy = "test"))
-})
+test_that("The input strategy must be of 'character' type and one of the four options",
+          {
+            expect_error(imputer(data, strategy = 2))
+            expect_error(imputer(data, strategy = "test"))
+          })
 
 # testing the input fill_value
 test_that("The input fill_value must be of 'numeric' type or NA", {
@@ -58,15 +59,3 @@ test_that("The imputed dataframe is not correct", {
   expect_true(all.equal(imputer(data, strategy = "most_frequent"), imp_most_frequent))
   expect_true(all.equal(imputer(data, strategy = "constant", 1), imp_constant))
 })
-
-
-
-
-
-
-
-
-
-
-
-
