@@ -1,12 +1,14 @@
 Package: eda.utilsR
 Title: R package containing utility functions for EDA in machine learning
 Version: 0.0.0.9000
-Authors@R: 
-    c(person(given = "Chuang", family = "Wang", role = c("aut", "cre")),
-    person(given = "Fatime", family = "Selimi", role = c("aut", "cre")),
-    person(given = "Jiacheng", family = "Wang", role = c("aut", "cre")),
-    person(given = "Micah", family = "Kwok", role = c("aut", "cre"))
-    )
+Authors@R: c(person("Chuang", "Wang", role = c("aut", "cre"),
+                     email = "chuangw.sde@gmai.com"),
+              person("Fatime", "Selimi", role = "aut", 
+                     email = "fatimeseelimi@gmail.com"),
+              person("Jiacheng", "Wang", role = "aut",
+                     email = "jiachengw@gmail.com"),
+              person("Micah", "Kwok", role = "ctb",
+                     email = "micahk@gmail.com"))
 Description: The package contains basic functions for imputation, scaling, 
     dealing with outliers and plotting correlation heatmap.
 License: MIT + file LICENSE
