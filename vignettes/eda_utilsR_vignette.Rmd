@@ -56,6 +56,7 @@ data_with_outlier <- data.frame('SepalLengthCm' = (c(5.1, 4.9, 4.7, 5.2, 5.1, 5.
 
 - __Impute__: Resolve skewed data by identifying missing data and outlier and provide corresponding remedy.
 
+Missing data in data frame can be painful for machine learning and statistic inference. Since plenty of machine learning package functions can't deal with data frame with missing cell and will return error when passing the data frame into them. Thus, impute function comes handy which will remove our impute the missing value.
 
 ```{r imputer demo}
 # calling imputer function
@@ -100,8 +101,9 @@ cor_map(data, num_col, "purpleorange")
 
 ### `scale`
 
-- __Scaling__: Scale the data in preperation for future use in machine learning projects.
+- __Scaling__: Scale the data in preparation for future use in machine learning projects.
 
+Scaling is important for multiple machine learning tasks. Since imbalanced numeric scale in data frame will cause several features being ignored or amplified. Thus diminish the effectiveness of the machine learning model. This is where scaling function comes in handy. This function can help to re-scale all the numeric columns within a dataframe to balance the magnitude of each column.
 
 ```{r scale demo}
 # defining the numeric columns
