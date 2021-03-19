@@ -134,14 +134,6 @@ outlier_identifier(data_with_outlier, method = "median")
 -   **Correlation Heatmap Plotting**: Easily plot a correlation matrix
     along with its values to help explore data.
 
-With EDA we generally want a quick snapshot of the data in order to
-understand it better. Visualizing the correlation between the numerical
-variables in the dataset are a good way to do that. This function allows
-you to quickly plot a correlation heat map of a chosen color scheme,
-along with correlation values overlaid. Users simply need to input the
-dataframe, the numeric columns wished to be plot () and an optional
-color scheme.
-
 ``` r
 # defining the numeric columns
 num_col <- c('SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm')
