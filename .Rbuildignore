@@ -4,3 +4,6 @@
 ^README\.Rmd$
 ^CONDUCT\.rst$
 ^CONTRIBUTING\.rst$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

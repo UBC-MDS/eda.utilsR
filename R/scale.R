@@ -45,14 +45,14 @@ scale <- function(df, columns, scaler = "standard") {
   }
   
   # Check if all input columns in columns are numeric columns
-  numeric_col <- df %>% select_if(is.numeric) %>% colnames()
+  numeric_col <- df %>% dplyr::select_if(is.numeric) %>% colnames()
   for (col in columns) {
     if (!(col %in% numeric_col)) {
       stop("The given numerical columns must all be numeric.")
     }
   }
   
-  data <- df %>% select(all_of(columns))
+  data <- df %>% dplyr::select(all_of(columns))
   
   if (scaler == 'minmax') {
     for (feature_name in 1:ncol(data)) {

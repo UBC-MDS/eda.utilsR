@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 
-```{r setup}
+```{r setup, message=FALSE, warning=FALSE}
 library(eda.utilsR)
 ```
 
@@ -30,18 +30,60 @@ This package contains four functions:
 
 ### Data
 
-For this demonstration we will use the following dataset.
+For this demonstration we will use the following datasets.
 
 ```{r Dataset}
 data <- data.frame('SepalLengthCm' = (c(5.1, 4.9, 4.7)), 
                    'SepalWidthCm'= (c(1.4, 1.4, 1.3)),
                   'PetalWidthCm'= (c(0.2, 0.1, 0.2)),
                   'Species' = (c('Iris-setosa','Iris-virginica', 'Iris-germanica')))
+
+data_with_NA <- data.frame('SepalLengthCm' = (c(5.1, 4.9, 4.7)), 
+                   'SepalWidthCm'= (c(1.4, 1.4, 1.3)),
+                  'PetalWidthCm'= (c(0.2, 0.1, NA)))
+
+data_with_outlier <- data.frame('SepalLengthCm' = (c(5.1, 4.9, 4.7, 5.2, 5.1, 5.2, 5.1, 4.8)), 
+                   'SepalWidthCm'= (c(1.4, 1.4, 1.3, 1.2, 1.2, 1.3, 1.6, 1.3)),
+                  'PetalWidthCm'= (c(0.2, 0.1, 30, 0.2, 0.3, 0.1, 0.4, 0.5)))
+
 ```
+
+
+### `imputer`
+
+- __Impute__: Resolve skewed data by identifying missing data and outlier and provide corresponding remedy.
+
+
+```{r imputer demo}
+# calling imputer function
+imputer(data_with_NA)
+```
+
+
+### `outlier_identifier`
+
+- __Identify Outliers__: Identify and deal with outliers in the dataset.
+
+
+```{r outlier_identifier demo}
+# calling outlier_identifier function
+outlier_identifier(data_with_outlier, method = "median")
+```
+
+
 
 ### `cor_map`
 
+- __Correlation Heatmap Plotting__: Easily plot a correlation matrix along with its values to help explore data.
+
 With EDA we generally want a quick snapshot of the data in order to understand it better. Visualizing the correlation between the numerical variables in the dataset are a good way to do that. This function allows you to quickly plot a correlation heat map of a chosen color scheme, along with correlation values overlaid. Users simply need to input the dataframe, the numeric columns wished to be plot () and an optional color scheme. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library('dplyr')
+library('reshape2')
+library('ggplot2')
+```
+
 
 ```{r cor_map demo}
 # defining the numeric columns
@@ -49,5 +91,18 @@ num_col <- c('SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm')
 
 # calling cor_map function
 cor_map(data, num_col, "purpleorange")
+```
+
+### `scale`
+
+- __Scaling__: Scale the data in preperation for future use in machine learning projects.
+
+
+```{r scale demo}
+# defining the numeric columns
+num_col <- c('SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm')
+
+# calling scale function
+scale(data, num_col, "minmax")
 ```
 
