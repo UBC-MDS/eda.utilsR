@@ -2,11 +2,11 @@ Package: eda.utilsR
 Title: R package containing utility functions for EDA in machine learning
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Chuang",
-           family = "Wang",
-           role = c("aut", "cre"),
-           email = "chuangw.sde@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    c(person(given = "Chuang", family = "Wang", role = c("aut", "cre")),
+    person(given = "Fatime", family = "Selimi", role = c("aut", "cre")),
+    person(given = "Jiacheng", family = "Wang", role = c("aut", "cre")),
+    person(given = "Micah", family = "Kwok", role = c("aut", "cre"))
+    )
 Description: The package contains basic functions for imputation, scaling, 
     dealing with outliers and plotting correlation heatmap.
 License: MIT + file LICENSE
@@ -22,5 +22,8 @@ Imports:
     stats,
     rlang
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
 Config/testthat/edition: 3
+VignetteBuilder: knitr
