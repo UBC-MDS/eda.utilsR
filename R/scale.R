@@ -7,7 +7,7 @@
 #' @return The scaled dataframe for numerical features
 #' @import dplyr
 #' @importFrom stats sd median
-#' 
+#'
 #' @export
 #'
 #' @examples
