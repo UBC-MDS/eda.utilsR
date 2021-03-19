@@ -4,6 +4,8 @@
 # eda.utilsR
 
 <!-- badges: start -->
+
+[![codecov](https://codecov.io/gh/UBC-MDS/eda.utilsR/branch/main/graph/badge.svg?token=HLOU5SGBKH)](https://codecov.io/gh/UBC-MDS/eda.utilsR)
 <!-- badges: end -->
 
 ## Overview
