@@ -46,7 +46,7 @@ The four functions contained in this package are as follows:
 
 ## Installation
 
-You can install the development version from [GitHub](https://github.com/) with:
+You can install the development version from [GitHub](https://github.com/UBC-MDS/eda.utilsR) with:
 
 ``` r
 # install.packages("devtools") # run this line first if `devtools` package is not installed in your local.
@@ -162,6 +162,11 @@ num_col <- c('SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm')
 # calling scale function
 scale(data, num_col, "minmax")
 ```
+
+
+## Documentation
+
+Please find the detail documentation in the [vignette](https://ubc-mds.github.io/eda.utilsR/articles/eda_utilsR_vignette.html).
 
 
 ## Contributors

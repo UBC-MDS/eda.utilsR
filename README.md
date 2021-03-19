@@ -40,7 +40,7 @@ The four functions contained in this package are as follows:
 ## Installation
 
 You can install the development version from
-[GitHub](https://github.com/) with:
+[GitHub](https://github.com/UBC-MDS/eda.utilsR) with:
 
 ``` r
 # install.packages("devtools") # run this line first if `devtools` package is not installed in your local.
@@ -122,16 +122,7 @@ imputer(data_with_NA)
 ``` r
 # calling outlier_identifier function
 outlier_identifier(data_with_outlier, method = "mean")
-#>   SepalLengthCm SepalWidthCm PetalWidthCm
-#> 1           5.1          1.4         0.20
-#> 2           4.9          1.4         0.10
-#> 3           4.7          1.3         3.59
-#> 4           5.2          1.2         0.20
-#> 5           5.1          1.2         0.30
-#> 6           5.2          1.3         0.10
-#> 7           5.1          1.6         0.40
-#> 8           4.8          1.3         0.50
-#> 9           5.3          1.5         0.50
+#> NULL
 ```
 
 ### 3. `cor_map`
@@ -165,6 +156,11 @@ scale(data, num_col, "minmax")
 #> 2           0.5            1            0
 #> 3           0.0            0            1
 ```
+
+## Documentation
+
+Please find the detail documentation in the
+[vignette](https://ubc-mds.github.io/eda.utilsR/articles/eda_utilsR_vignette.html).
 
 ## Contributors
 
