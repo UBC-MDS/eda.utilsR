@@ -45,16 +45,10 @@ The four functions contained in this package are as follows:
 
 ## Installation
 
-You can install the released version of eda.utilsR from [CRAN](https://CRAN.R-project.org) with:
+You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
-install.packages("eda.utilsR")
-```
-
-And the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
+# install.packages("devtools") # run this line first if `devtools` package is not installed in your local.
 devtools::install_github("UBC-MDS/eda.utilsR")
 ```
 
