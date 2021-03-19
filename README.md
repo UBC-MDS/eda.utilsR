@@ -99,9 +99,9 @@ data_with_NA <- data.frame('SepalLengthCm' = (c(5.1, 4.9, 4.7)),
                    'SepalWidthCm'= (c(1.4, 1.4, 1.3)),
                   'PetalWidthCm'= (c(0.2, 0.1, NA)))
 
-data_with_outlier <- data.frame('SepalLengthCm' = (c(5.1, 4.9, 4.7, 5.2, 5.1, 5.2, 5.1, 4.8)), 
-                   'SepalWidthCm'= (c(1.4, 1.4, 1.3, 1.2, 1.2, 1.3, 1.6, 1.3)),
-                  'PetalWidthCm'= (c(0.2, 0.1, 30, 0.2, 0.3, 0.1, 0.4, 0.5)))
+data_with_outlier <- data.frame('SepalLengthCm' = (c(5.1, 4.9, 4.7, 5.2, 5.1, 5.2, 5.1, 4.8, 5.3)), 
+                   'SepalWidthCm'= (c(1.4, 1.4, 1.3, 1.2, 1.2, 1.3, 1.6, 1.3, 1.5)),
+                  'PetalWidthCm'= (c(0.2, 0.1, 30, 0.2, 0.3, 0.1, 0.4, 0.5, 0.5)))
 ```
 
 ### 1. `imputer`
@@ -125,8 +125,17 @@ imputer(data_with_NA)
 
 ``` r
 # calling outlier_identifier function
-outlier_identifier(data_with_outlier, method = "median")
-#> NULL
+outlier_identifier(data_with_outlier, method = "mean")
+#>   SepalLengthCm SepalWidthCm PetalWidthCm
+#> 1           5.1          1.4         0.20
+#> 2           4.9          1.4         0.10
+#> 3           4.7          1.3         3.59
+#> 4           5.2          1.2         0.20
+#> 5           5.1          1.2         0.30
+#> 6           5.2          1.3         0.10
+#> 7           5.1          1.6         0.40
+#> 8           4.8          1.3         0.50
+#> 9           5.3          1.5         0.50
 ```
 
 ### 3. `cor_map`
