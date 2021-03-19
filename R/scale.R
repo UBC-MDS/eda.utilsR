@@ -5,14 +5,17 @@
 #' @param scaler The method for scaling data and can only be one of the following: 'standard', 'minmax'
 #'
 #' @return The scaled dataframe for numerical features
+#' @import dplyr
+#' @importFrom stats sd median
+#' 
 #' @export
 #'
 #' @examples
-#' df = tibble::tibble(
-#' col1 = c(1, 2, 1),
-#' col2 = c(2, 2, 1)
+#' data1 = data.frame(
+#' "col1" = c(1, 2, 1),
+#' "col2" = c(2, 2, 1)
 #' )
-#' scale(df, numerical_columns)
+#' scale(data1, c('col1', 'col2'))
 scale <- function(df, columns, scaler = "standard") {
   # Check if input data is data.frame type
   if (!is.data.frame(df)) {

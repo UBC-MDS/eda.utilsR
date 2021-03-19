@@ -8,6 +8,9 @@
 #           - if "mean" : we replace outliers with mean values
 #'
 #' @return dataframe object; a dataframe which the outlier has already process by the chosen method
+#' @import dplyr
+#' @importFrom stats sd median
+#' 
 #' @export
 #'
 #' @examples
@@ -36,7 +39,7 @@ outlier_identifier <- function(dataframe, columns= NULL, method = 'trim'){
     if(!is.vector(columns)){
       stop("Argument columns must be a vector")
     }
-     possible_numeric_col <- dataframe %>% select(where(is.numeric)) %>% colnames()
+     possible_numeric_col <- dataframe %>% select_if(is.numeric) %>% colnames()
       for (col in columns){
         if (!(col %in% possible_numeric_col)){
           stop("The given columns contains non-numeric columns in this dataframe.")

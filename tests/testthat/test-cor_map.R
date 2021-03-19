@@ -35,7 +35,7 @@ test_that("The given numerical columns must all be numeric.", {
 #testing the outputs
 # Tests whether output plot object is of type ggplot
 test_that('Plot should be of ggplot type.',{
-  expect_true(is.ggplot(plot_demo))
+  expect_true(ggplot2::is.ggplot(plot_demo))
 })
 
 # Tests whether or not there are NaNs produced in the correlation values
@@ -56,5 +56,5 @@ test_that('Plot should map x to Var1 and y to Var2',{
 
 # Tests whether the first color in heatmap is orange
 test_that('The first color cell should be orange',{
-  expect_true('#DB8322' == ggplot_build(plot_demo)$data[[1]]['fill'][1,])
+  expect_true('#DB8322' == ggplot2::ggplot_build(plot_demo)$data[[1]]['fill'][1,])
 })

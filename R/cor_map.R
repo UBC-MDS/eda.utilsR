@@ -5,11 +5,6 @@
 #' @param col_scheme The color scheme of the heatmap desired, can only be one of the following: 'purpleorange', 'blueorange', 'redblue'. Defaults to 'purpleorange'.
 #'
 #' @return ggplot object; A correlation heatmap plot with correlation coefficient labels based on the numeric columns specified by user.
-#' @import dplyr
-#' @import ggplot2
-#' @import reshape2
-#' @import stats
-#' @importFrom rlang .data
 #' 
 #' @export
 #'
@@ -54,7 +49,7 @@ cor_map <- function(dataframe, num_col, col_scheme = 'purpleorange'){
   }
   
   # Tests whether all input columns in num_col are numeric columns
-  possible_numeric_col <- dataframe %>% select_if(is.numeric) %>% colnames()
+  possible_numeric_col <- dataframe %>% dplyr::select_if(is.numeric) %>% colnames()
   for (x in num_col){
     if (!(x %in% possible_numeric_col)){
       stop("The given numerical columns must all be numeric.")
@@ -72,23 +67,23 @@ cor_map <- function(dataframe, num_col, col_scheme = 'purpleorange'){
     high_c = '#296faa'
   }
   
-  data <- dataframe %>% select(all_of(num_col))
+  data <- dataframe %>% dplyr::select(all_of(num_col))
   
-  corr_data <- round(cor(data),2)
+  corr_data <- round(stats::cor(data),2)
   
-  melted_corr_data <- melt(corr_data)
+  melted_corr_data <- reshape2::melt(corr_data)
   
-  cor_plot <- ggplot(melted_corr_data, aes(x = .data$Var1, y = .data$Var2, fill = .data$value)) +
-    geom_tile() + 
-    scale_fill_gradient2(low = low_c, mid = 'white', high = high_c, midpoint = 0, limit = c(-1,1)) +
-    labs(fill = 'Correlation', title = 'Correlation Plot') +
-    theme(axis.text.x = element_text(size = 10),
-          axis.text.y = element_text(size = 10))
+  cor_plot <- ggplot2::ggplot(melted_corr_data, ggplot2::aes(x = .data$Var1, y = .data$Var2, fill = .data$value)) +
+    ggplot2::geom_tile() + 
+    ggplot2::scale_fill_gradient2(low = low_c, mid = 'white', high = high_c, midpoint = 0, limit = c(-1,1)) +
+    ggplot2::labs(fill = 'Correlation', title = 'Correlation Plot') +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(size = 10),
+          axis.text.y = ggplot2::element_text(size = 10))
   
   cor_heatmap <- cor_plot +
-    geom_text(aes(x = .data$Var1, y = .data$Var2, label = .data$value), size = 7) +
-    theme(axis.title.x = element_blank(),
-          axis.title.y = element_blank()) + coord_fixed()
+    ggplot2::geom_text(ggplot2::aes(x = .data$Var1, y = .data$Var2, label = .data$value), size = 7) +
+    ggplot2::theme(axis.title.x = ggplot2::element_blank(),
+                   axis.title.y = ggplot2::element_blank()) + ggplot2::coord_fixed()
   
   return(cor_heatmap)
 }
