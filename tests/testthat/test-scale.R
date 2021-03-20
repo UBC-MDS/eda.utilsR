@@ -1,3 +1,7 @@
+data <- data.frame('col1' = (c(1, 2, 1)),
+                   'col2' = (c(0, 1, 2)),
+                   'col3' = (c('nje', 'dy', 'tre')))
+
 data1 <- data.frame('col1' = (c(1, 2, 1)),
                     'col2' = (c(0, 1, 2)))
 
@@ -43,16 +47,18 @@ data2_minmax <-
              'col3' = (c(1.0, 0.0, 0.0, 1.0, 0.5)))
 
 # test the input dataframe
-test_that("The input must be of type 'data.frame'", {
-  expect_error(cor_map(as.character(data), c('col1', 'col2')))
+test_that("The input data must be of type 'data.frame'", {
+  expect_error(scale(c('col1', 'col2'), c('col1', 'col2')))
+  expect_error(scale(as.array(data1), c('col1', 'col2')))
 })
+
 
 # test for numerical columns
 test_that('columns must be a vector of characters', {
-  expect_error(sclae(data1, c(1, 2, 3)))
+  expect_error(scale(data1, c(1, 2, 3)))
 })
 
-# test for sclaer method if it's a character
+# test for scaler method if it's a character
 test_that('scalser must be of character class', {
   expect_error(scale(data1, c('col1', 'col2'), scaler = 2))
 })
@@ -60,6 +66,18 @@ test_that('scalser must be of character class', {
 # test if column names exist in the dataframe
 test_that("The given column names must exist in the given dataframe.", {
   expect_error(scale(data1, c('one', 'two', 'three', 'five')))
+})
+
+# test the scaler method type
+test_that("The input strategy must be of 'character' type and one of the four options",
+          {
+            expect_error(scale(data1, c('col1', 'col2'), scaler = 1))
+            expect_error(scale(data1, c('col1', 'col2'), scaler = "some_method"))
+          })
+
+# test if all input columns in columns are numeric columns
+test_that("The given numerical columns must all be numeric.", {
+  expect_error(scale(data, c('col1', 'col2', 'col3')))
 })
 
 
