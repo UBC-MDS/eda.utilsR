@@ -50,6 +50,7 @@ test_that("The input fill_value must be of 'numeric' type or NA", {
 test_that("The input fill_value and strategy should be consistent.", {
   expect_error(imputer(data, strategy = "mean", fill_value = "2"))
   expect_error(imputer(data, strategy = "constant", fill_value = NA))
+  expect_error(imputer(data, strategy = "mean", fill_value = 3))
 })
 
 

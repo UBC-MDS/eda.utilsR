@@ -40,7 +40,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -76,7 +76,7 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#edautilsr" class="anchor"></a>eda.utilsR</h1></div>
 <!-- badges: start -->
-<!-- badges: end -->
+
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
@@ -111,24 +111,21 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of eda.utilsR from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<p>You can install the development version from <a href="https://github.com/UBC-MDS/eda.utilsR">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"eda.utilsR"</span><span class="op">)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<code class="sourceCode R"><span class="co"># install.packages("devtools") # run this line first if `devtools` package is not installed in your local.</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"UBC-MDS/eda.utilsR"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="dependencies" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dependencies" class="anchor"></a>Dependencies</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dplyr</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ggplot2</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>reshape2</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>stats</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>rlang</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>testthat</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>tibble</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dplyr</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ggplot2</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>reshape2</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>stats</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>rlang</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>testthat</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>tibble</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -142,16 +139,21 @@
 <li>Machine learning perpetration : Perform column transformations, derive scaler automatically to fulfill further machine learning need</li>
 </ul>
 </div>
+<div id="documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation" class="anchor"></a>Documentation</h2>
+<p>Please find the detailed documentation in the <a href="https://ubc-mds.github.io/eda.utilsR/articles/eda_utilsR_vignette.html">vignette</a>.</p>
+</div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">eda.utilsR</span><span class="op">)</span></code></pre></div>
 <div id="data" class="section level4">
 <h4 class="hasAnchor">
 <a href="#data" class="anchor"></a>Data</h4>
 <p>For this demonstration we will use the following datasets.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">'SepalLengthCm'</span> <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5.1</span>, <span class="fl">4.9</span>, <span class="fl">4.7</span><span class="op">)</span><span class="op">)</span>, 
                    <span class="st">'SepalWidthCm'</span><span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.4</span>, <span class="fl">1.4</span>, <span class="fl">1.3</span><span class="op">)</span><span class="op">)</span>,
                   <span class="st">'PetalWidthCm'</span><span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span><span class="op">)</span><span class="op">)</span>,
@@ -161,9 +163,9 @@
                    <span class="st">'SepalWidthCm'</span><span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.4</span>, <span class="fl">1.4</span>, <span class="fl">1.3</span><span class="op">)</span><span class="op">)</span>,
                   <span class="st">'PetalWidthCm'</span><span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">data_with_outlier</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">'SepalLengthCm'</span> <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5.1</span>, <span class="fl">4.9</span>, <span class="fl">4.7</span>, <span class="fl">5.2</span>, <span class="fl">5.1</span>, <span class="fl">5.2</span>, <span class="fl">5.1</span>, <span class="fl">4.8</span><span class="op">)</span><span class="op">)</span>, 
-                   <span class="st">'SepalWidthCm'</span><span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.4</span>, <span class="fl">1.4</span>, <span class="fl">1.3</span>, <span class="fl">1.2</span>, <span class="fl">1.2</span>, <span class="fl">1.3</span>, <span class="fl">1.6</span>, <span class="fl">1.3</span><span class="op">)</span><span class="op">)</span>,
-                  <span class="st">'PetalWidthCm'</span><span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">30</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="va">data_with_outlier</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">'SepalLengthCm'</span> <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5.1</span>, <span class="fl">4.9</span>, <span class="fl">4.7</span>, <span class="fl">5.2</span>, <span class="fl">5.1</span>, <span class="fl">5.2</span>, <span class="fl">5.1</span>, <span class="fl">4.8</span>, <span class="fl">5.3</span><span class="op">)</span><span class="op">)</span>, 
+                   <span class="st">'SepalWidthCm'</span><span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.4</span>, <span class="fl">1.4</span>, <span class="fl">1.3</span>, <span class="fl">1.2</span>, <span class="fl">1.2</span>, <span class="fl">1.3</span>, <span class="fl">1.6</span>, <span class="fl">1.3</span>, <span class="fl">1.5</span><span class="op">)</span><span class="op">)</span>,
+                  <span class="st">'PetalWidthCm'</span><span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">30</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="1-imputer" class="section level3">
 <h3 class="hasAnchor">
@@ -173,7 +175,7 @@
 <li>
 <strong>Impute</strong>: Resolve skewed data by identifying missing data and outlier and provide corresponding remedy.</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># calling imputer function</span>
 <span class="fu"><a href="reference/imputer.html">imputer</a></span><span class="op">(</span><span class="va">data_with_NA</span><span class="op">)</span>
 <span class="co">#&gt;   SepalLengthCm SepalWidthCm PetalWidthCm</span>
@@ -189,10 +191,19 @@
 <li>
 <strong>Identify Outliers</strong>: Identify and deal with outliers in the dataset.</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># calling outlier_identifier function</span>
-<span class="fu"><a href="reference/outlier_identifier.html">outlier_identifier</a></span><span class="op">(</span><span class="va">data_with_outlier</span>, method <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span>
-<span class="co">#&gt; NULL</span></code></pre></div>
+<span class="fu"><a href="reference/outlier_identifier.html">outlier_identifier</a></span><span class="op">(</span><span class="va">data_with_outlier</span>, method <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span>
+<span class="co">#&gt;   SepalLengthCm SepalWidthCm PetalWidthCm</span>
+<span class="co">#&gt; 1           5.1          1.4         0.20</span>
+<span class="co">#&gt; 2           4.9          1.4         0.10</span>
+<span class="co">#&gt; 3           4.7          1.3         3.59</span>
+<span class="co">#&gt; 4           5.2          1.2         0.20</span>
+<span class="co">#&gt; 5           5.1          1.2         0.30</span>
+<span class="co">#&gt; 6           5.2          1.3         0.10</span>
+<span class="co">#&gt; 7           5.1          1.6         0.40</span>
+<span class="co">#&gt; 8           4.8          1.3         0.50</span>
+<span class="co">#&gt; 9           5.3          1.5         0.50</span></code></pre></div>
 </div>
 <div id="3-cor_map" class="section level3">
 <h3 class="hasAnchor">
@@ -202,7 +213,7 @@
 <li>
 <strong>Correlation Heatmap Plotting</strong>: Easily plot a correlation matrix along with its values to help explore data.</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># defining the numeric columns</span>
 <span class="va">num_col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'SepalLengthCm'</span>, <span class="st">'SepalWidthCm'</span>, <span class="st">'PetalWidthCm'</span><span class="op">)</span>
 
@@ -218,7 +229,7 @@
 <li>
 <strong>Scaling</strong>: Scale the data in preperation for future use in machine learning projects.</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># defining the numeric columns</span>
 <span class="va">num_col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'SepalLengthCm'</span>, <span class="st">'SepalWidthCm'</span>, <span class="st">'PetalWidthCm'</span><span class="op">)</span>
 
@@ -251,18 +262,24 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Chuang Wang <br><small class="roles"> Author, maintainer </small>  </li>
-<li>Fatime Selimi <br><small class="roles"> Author, maintainer </small>  </li>
-<li>Jiacheng Wang <br><small class="roles"> Author, maintainer </small>  </li>
-<li>Micah Kwok <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Fatime Selimi <br><small class="roles"> Author </small>  </li>
+<li>Jiacheng Wang <br><small class="roles"> Author </small>  </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://codecov.io/gh/UBC-MDS/eda.utilsR"><img src="https://codecov.io/gh/UBC-MDS/eda.utilsR/branch/main/graph/badge.svg?token=HLOU5SGBKH" alt="codecov"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Chuang Wang, Fatime Selimi, Jiacheng Wang, Micah Kwok.</p>
+  <p>Developed by Chuang Wang, Fatime Selimi, Jiacheng Wang.</p>
 </div>
 
 <div class="pkgdown">

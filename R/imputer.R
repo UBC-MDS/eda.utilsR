@@ -1,19 +1,23 @@
 #' A function to implement imputation functionality for completing missing values.
 #'
-#' @param df list
-#' @param strategy character
-#' @param fill_value character
+#' @param df list. A dataframe that might contain missing data
+#' @param strategy character type. Specifies imputation strategy. 
+#' - If "mean", then replace missing values using the mean along each column. Can only be used with numeric data.
+#' - If "median", then replace missing values using the median along each column. Can only be used with numeric data.
+#' - If "most_frequent", then replace missing using the most frequent value along each column. Can be used with strings or numeric data. If there is more than one such value, only the smallest is returned.
+#' - If "constant", then replace missing values with fill_value. Can be used with strings or numeric data.
+#' @param fill_value double. A numeric value that is used to replace all occurrences of missing values when strategy is "constant".
+
 #'
-#' @return list
-#' @import dplyr
-#' @importFrom stats sd median
+#' @return list. Imputed dataframe that contains no NA values
 #'
 #' @export
 #'
 #' @examples
 #' df <- data.frame(
-#'   "col1" = c(1, 2, NA),
-#'   "col2" = c(2, NA, NA)
+#'   "col1" = c(8, 2, NA, 4),
+#'   "col2" = c(2, NA, NA, 2),
+#'   "col3" = c(6, 3, NA, 9)
 #' )
 #'
 #' imputer(df)
@@ -35,7 +39,7 @@ imputer <- function(df,
   if (strategy != "constant" & is.numeric(fill_value)) {
     (stop("fill_value can be a number only when strategy is 'constant'"))
   }
-  
+
   for (i in 1:ncol(df)) {
     if (strategy == "mean") {
       df[is.na(df[, i]), i] <- mean(df[, i], na.rm = TRUE)
@@ -50,6 +54,6 @@ imputer <- function(df,
       stop("strategy should be one of 'mean', 'median', 'most_frequent' and 'constant'")
     }
   }
-  
+
   df
 }

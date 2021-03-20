@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -131,35 +131,40 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>list</p></td>
+      <td><p>list. A dataframe that might contain missing data</p></td>
     </tr>
     <tr>
       <th>strategy</th>
-      <td><p>character</p></td>
+      <td><p>character type. Specifies imputation strategy.</p><ul>
+<li><p>If "mean", then replace missing values using the mean along each column. Can only be used with numeric data.</p></li>
+<li><p>If "median", then replace missing values using the median along each column. Can only be used with numeric data.</p></li>
+<li><p>If "most_frequent", then replace missing using the most frequent value along each column. Can be used with strings or numeric data. If there is more than one such value, only the smallest is returned.</p></li>
+<li><p>If "constant", then replace missing values with fill_value. Can be used with strings or numeric data.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>fill_value</th>
-      <td><p>character</p></td>
+      <td><p>double. A numeric value that is used to replace all occurrences of missing values when strategy is "constant".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list</p>
+    <p>list. Imputed dataframe that contains no NA values</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-  <span class='st'>"col1"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='cn'>NA</span><span class='op'>)</span>,
-  <span class='st'>"col2"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+  <span class='st'>"col1"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>8</span>, <span class='fl'>2</span>, <span class='cn'>NA</span>, <span class='fl'>4</span><span class='op'>)</span>,
+  <span class='st'>"col2"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>2</span><span class='op'>)</span>,
+  <span class='st'>"col3"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='fl'>3</span>, <span class='cn'>NA</span>, <span class='fl'>9</span><span class='op'>)</span>
 <span class='op'>)</span>
 
 <span class='fu'>imputer</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: argument is not numeric or logical: returning NA</span></div><div class='output co'>#&gt; <span class='warning'>Warning: argument is not numeric or logical: returning NA</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 2</span><span>
-#&gt;    col1  col2
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1     2
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     2    </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span></div></span></pre>
+</div><div class='output co'>#&gt;       col1 col2 col3
+#&gt; 1 8.000000    2    6
+#&gt; 2 2.000000    2    3
+#&gt; 3 4.666667    2    6
+#&gt; 4 4.000000    2    9</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -171,7 +176,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Chuang Wang, Fatime Selimi, Jiacheng Wang, Micah Kwok.</p>
+  <p>Developed by Chuang Wang, Fatime Selimi, Jiacheng Wang.</p>
 </div>
 
 <div class="pkgdown">

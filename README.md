@@ -4,6 +4,8 @@
 # eda.utilsR
 
 <!-- badges: start -->
+
+[![codecov](https://codecov.io/gh/UBC-MDS/eda.utilsR/branch/main/graph/badge.svg?token=HLOU5SGBKH)](https://codecov.io/gh/UBC-MDS/eda.utilsR)
 <!-- badges: end -->
 
 ## Overview
@@ -37,17 +39,11 @@ The four functions contained in this package are as follows:
 
 ## Installation
 
-You can install the released version of eda.utilsR from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the development version from
+[GitHub](https://github.com/UBC-MDS/eda.utilsR) with:
 
 ``` r
-install.packages("eda.utilsR")
-```
-
-And the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
+# install.packages("devtools") # run this line first if `devtools` package is not installed in your local.
 devtools::install_github("UBC-MDS/eda.utilsR")
 ```
 
@@ -78,6 +74,11 @@ The eda.utilsR is capable of :
     understand the data and find scenarios for performing the analysis.
 -   Machine learning perpetration : Perform column transformations,
     derive scaler automatically to fulfill further machine learning need
+
+## Documentation
+
+Please find the detailed documentation in the
+[vignette](https://ubc-mds.github.io/eda.utilsR/articles/eda_utilsR_vignette.html).
 
 ## Example
 

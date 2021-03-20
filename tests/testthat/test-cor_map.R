@@ -9,6 +9,8 @@ data <- data.frame(
 num_col <- c('SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm')
 
 plot_demo <- cor_map(data, num_col)
+plot_demo2 <- cor_map(data, num_col, 'blueorange')
+plot_demo3 <- cor_map(data, num_col, 'redblue')
 
 # testing the inputs
 test_that("The input dataframe must be of 'data.frame' type", {
@@ -65,6 +67,9 @@ test_that('Plot should map x to Var1 and y to Var2', {
 })
 
 # Tests whether the first color in heatmap is orange
-test_that('The first color cell should be orange', {
+test_that("The first color cell should be orange for 'purpleorange', 'blueorange' and blue for 'redblue'", {
   expect_true('#DB8322' == ggplot2::ggplot_build(plot_demo)$data[[1]]['fill'][1, ])
+  expect_true('#DB8322' == ggplot2::ggplot_build(plot_demo2)$data[[1]]['fill'][1, ])
+  expect_true('#296FAA' == ggplot2::ggplot_build(plot_demo3)$data[[1]]['fill'][1, ])
 })
+
