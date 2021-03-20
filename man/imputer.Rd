@@ -7,22 +7,29 @@
 imputer(df, strategy = "mean", fill_value = NA)
 }
 \arguments{
-\item{df}{list}
+\item{df}{list. A dataframe that might contain missing data}
 
-\item{strategy}{character}
+\item{strategy}{character type. Specifies imputation strategy.
+\itemize{
+\item If "mean", then replace missing values using the mean along each column. Can only be used with numeric data.
+\item If "median", then replace missing values using the median along each column. Can only be used with numeric data.
+\item If "most_frequent", then replace missing using the most frequent value along each column. Can be used with strings or numeric data. If there is more than one such value, only the smallest is returned.
+\item If "constant", then replace missing values with fill_value. Can be used with strings or numeric data.
+}}
 
-\item{fill_value}{character}
+\item{fill_value}{double. A numeric value that is used to replace all occurrences of missing values when strategy is "constant".}
 }
 \value{
-list
+list. Imputed dataframe that contains no NA values
 }
 \description{
 A function to implement imputation functionality for completing missing values.
 }
 \examples{
-df <- tibble::tibble(
-  "col1" = c(1, 2, NA),
-  "col2" = c(2, NA, NA)
+df <- data.frame(
+  "col1" = c(8, 2, NA, 4),
+  "col2" = c(2, NA, NA, 2),
+  "col3" = c(6, 3, NA, 9)
 )
 
 imputer(df)
