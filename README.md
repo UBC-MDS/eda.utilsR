@@ -75,6 +75,11 @@ The eda.utilsR is capable of :
 -   Machine learning perpetration : Perform column transformations,
     derive scaler automatically to fulfill further machine learning need
 
+## Documentation
+
+Please find the detailed documentation in the
+[vignette](https://ubc-mds.github.io/eda.utilsR/articles/eda_utilsR_vignette.html).
+
 ## Example
 
 ``` r
@@ -122,16 +127,7 @@ imputer(data_with_NA)
 ``` r
 # calling outlier_identifier function
 outlier_identifier(data_with_outlier, method = "mean")
-#>   SepalLengthCm SepalWidthCm PetalWidthCm
-#> 1           5.1          1.4         0.20
-#> 2           4.9          1.4         0.10
-#> 3           4.7          1.3         3.59
-#> 4           5.2          1.2         0.20
-#> 5           5.1          1.2         0.30
-#> 6           5.2          1.3         0.10
-#> 7           5.1          1.6         0.40
-#> 8           4.8          1.3         0.50
-#> 9           5.3          1.5         0.50
+#> NULL
 ```
 
 ### 3. `cor_map`
@@ -165,11 +161,6 @@ scale(data, num_col, "minmax")
 #> 2           0.5            1            0
 #> 3           0.0            0            1
 ```
-
-## Documentation
-
-Please find the detail documentation in the
-[vignette](https://ubc-mds.github.io/eda.utilsR/articles/eda_utilsR_vignette.html).
 
 ## Contributors
 
