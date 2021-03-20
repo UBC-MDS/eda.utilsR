@@ -77,6 +77,10 @@ The eda.utilsR is capable of :
 - Discover data: Plot correlation matrix to help explore data to understand the data and find scenarios for performing the analysis.
 - Machine learning perpetration : Perform column transformations, derive scaler automatically to fulfill further machine learning need
 
+## Documentation
+
+Please find the detailed documentation in the [vignette](https://ubc-mds.github.io/eda.utilsR/articles/eda_utilsR_vignette.html).
+
 
 ## Example
 
@@ -162,11 +166,6 @@ num_col <- c('SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm')
 # calling scale function
 scale(data, num_col, "minmax")
 ```
-
-
-## Documentation
-
-Please find the detail documentation in the [vignette](https://ubc-mds.github.io/eda.utilsR/articles/eda_utilsR_vignette.html).
 
 
 ## Contributors
