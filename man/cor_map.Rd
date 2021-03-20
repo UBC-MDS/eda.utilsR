@@ -21,13 +21,13 @@ A function to implement a correlation heatmap including coefficients based on gi
 }
 \examples{
 data <- data.frame(
-SepalLengthCm = c(5.1, 4.9, 4.7), 
-SepalWidthCm = c(1.4, 1.4, 1.3), 
+SepalLengthCm = c(5.1, 4.9, 4.7),
+SepalWidthCm = c(1.4, 1.4, 1.3),
 PetalWidthCm = c(0.2, 0.1, 0.2),
 Species = c('Iris-setosa','Iris-virginica', 'Iris-germanica')
 )
 numerical_columns <- c('SepalLengthCm','SepalWidthCm','PetalWidthCm')
- 
+
 cor_map(data, numerical_columns, col_scheme = 'purpleorange')
 
 }

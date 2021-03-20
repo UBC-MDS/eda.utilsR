@@ -25,7 +25,7 @@ SepalLengthCm = c(5.1, 4.9, 4.7, 5.4),
 SepalWidthCm = c(1.4, 1.4, 20, 2.3),
 PetalWidthCm = c(0.2, 0.2, 0.2, 0.9)
 )
- 
+
 outlier_identifier(data)
 
 }
