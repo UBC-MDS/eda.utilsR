@@ -117,11 +117,17 @@ test_that(
   {
     expect_error(outlier_identifier(test_df, columns = c(1, 2, 3), "mean"))
     expect_error(outlier_identifier(test_df, columns = c('Species'), "mean"))
-    expect_error(outlier_identifier(test_df, "mean"))
-    expect_error(outlier_identifier(test_df, columns = 123, method =  "mean"))
+    expect_error(outlier_identifier(test_df, columns = test_df, method =  "mean"))
   }
 )
 
+# data contains non-numeric columns
+test_that(
+  "non-numeric columns in the data frame",
+  {
+    expect_error(outlier_identifier(test_df, "mean"))
+  }
+)
 # method argument test
 test_that("selected method is not one of c('trim', 'median', 'mean')", {
   expect_error(outlier_identifier(test_df, columns = test_column, method = "bro"))
