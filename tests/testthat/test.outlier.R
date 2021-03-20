@@ -125,7 +125,7 @@ test_that(
 test_that(
   "non-numeric columns in the data frame",
   {
-    expect_error(outlier_identifier(test_df, "mean"))
+    expect_error(outlier_identifier(test_df, method = "mean"))
   }
 )
 # method argument test
