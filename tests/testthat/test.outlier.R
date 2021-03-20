@@ -17,6 +17,12 @@ test_df = data.frame(
   )
 )
 
+num_df = data.frame(
+  SepalLengthCm = c(5.1, 4.9, 4.7, 5.5, 5.1, 50, 5.4, 5.0, 5.2, 5.3, 5.1),
+  SepalWidthCm = c(1.4, 1.4, 20, 2.0, 0.7, 1.6, 1.2, 1.4, 1.8, 1.5, 2.1),
+  PetalWidthCm  = c(0.2, 0.2, 0.2, 0.3, 0.4, 0.5, 0.5, 0.6, 0.4, 0.2, 5)
+)
+
 test_column = c('SepalLengthCm', 'SepalWidthCm', 'PetalWidthCm')
 
 median_output = data.frame(
@@ -53,6 +59,13 @@ trim_output = data.frame(
     'Iris-setosa'
   )
 )
+
+num_out = data.frame(
+  SepalLengthCm = c(5.1, 4.9, 4.7, 5.5, 5.1, 9.21, 5.4, 5.0, 5.2, 5.3, 5.1),
+  SepalWidthCm = c(1.4, 1.4, 3.19, 2.0, 0.7, 1.6, 1.2, 1.4, 1.8, 1.5, 2.1),
+  PetalWidthCm  = c(0.2, 0.2, 0.2, 0.3, 0.4, 0.5, 0.5, 0.6, 0.4, 0.2, 0.77)
+)
+
 
 mean_output = data.frame(
   SepalLengthCm = c(5.1, 4.9, 4.7, 5.5, 5.1, 9.21, 5.4, 5.0, 5.2, 5.3, 5.1),
@@ -104,9 +117,17 @@ test_that(
   {
     expect_error(outlier_identifier(test_df, columns = c(1, 2, 3), "mean"))
     expect_error(outlier_identifier(test_df, columns = c('Species'), "mean"))
+    expect_error(outlier_identifier(test_df, columns = test_df, method =  "mean"))
   }
 )
 
+# data contains non-numeric columns
+test_that(
+  "non-numeric columns in the data frame",
+  {
+    expect_error(outlier_identifier(test_df, method = "mean"))
+  }
+)
 # method argument test
 test_that("selected method is not one of c('trim', 'median', 'mean')", {
   expect_error(outlier_identifier(test_df, columns = test_column, method = "bro"))
@@ -134,5 +155,12 @@ test_that("The outlier function has error values", {
       method = "mean"
     ),
     column_output
+  ))
+  expect_true(all.equal(
+    outlier_identifier(
+      num_df,
+      method = "mean"
+    ),
+    num_out
   ))
 })
